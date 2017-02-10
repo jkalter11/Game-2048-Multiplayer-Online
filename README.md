@@ -17,3 +17,6 @@ Link demo : http://2048.xsystem.io
 6. Go to `[your_server_ip]:6789`
 
 # Deploy with cordova
+
+1. In file `/Cordova/www/index.html` line `47` please replace your website want change to here.
+2. Read guide deploy with cordova at here http://docs.phonegap.com/

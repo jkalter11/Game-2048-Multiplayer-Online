@@ -1,0 +1,214 @@
+<style>
+  .tile-2 .tile-inner {
+    background: url('<%= game.app.imagesInGame[0] %>') no-repeat !important;
+
+  }
+  .tile-4 .tile-inner {
+    background: url('<%= game.app.imagesInGame[1] %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-8 .tile-inner {
+    background: url('<%= game.app.imagesInGame[2] %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-16 .tile-inner {
+    background: url('<%= game.app.imagesInGame[3] %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-32 .tile-inner {
+    background: url('<%= game.app.imagesInGame[4] %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-64 .tile-inner {
+    background: url('<%= game.app.imagesInGame[5] %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-128 .tile-inner {
+    background: url('<%= game.app.imagesInGame[6] %>') no-repeat !important;
+    text-indent: 1000px;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048);
+  }
+  .tile-256 .tile-inner {
+    background: url('<%= game.app.imagesInGame[7] %>') no-repeat !important;
+    text-indent: 1000px;
+    box-shadow: 0 0 30px 10px rgba(243, 116, 116, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048);
+  }
+  .tile-512 .tile-inner {
+    background: url('<%= game.app.imagesInGame[8] %>') no-repeat !important;
+    text-indent: 1000px;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048);
+  }
+  .tile-1024 .tile-inner {
+    background: url('<%= game.app.imagesInGame[9] %>') no-repeat !important;
+    text-indent: 1000px;
+    box-shadow: 0 0 30px 10px rgba(116, 243, 137, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048);
+  }
+  .tile-2048 .tile-inner {
+    background: url('<%= game.app.imagesInGame[10] %>') no-repeat !important;
+    text-indent: 1000px;
+    box-shadow: 0 0 30px 10px rgba(153, 116, 243, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048);
+  }
+  .background-app {
+    background: url('<%= game.app.background %>') no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+<div class="back-home">
+  <a href="/game/<%= (game) ? game.app.id : '1'%>">
+    <img src="/images/back.png" alt="">
+  </a>
+  <a href="/" style="margin-left: 10px;">
+    <img src="/images/back-home.png" alt="">
+  </a>
+</div>
+<div class="container private-game g-<%= (user)? user.id : 'no' %>" id="iGame">
+  <input type="hidden" value="r-<%=(game) ? game.id : 'no' %>" id="thisRoom">
+  <input type="hidden" value="<%= (user)? user.id : 'no' %>" id="thisPlayer">
+  <input type="hidden" value="<%= (game)? game.owner.id : 'no' %>" id="thisOwner">
+  <div id="createAccount" style="display: <%= (user == undefined) ? 'block' : 'none' %>" class="<%= (user == undefined) ? 'block' : 'none' %>" >
+    <form action="/v1/player/new-player" method="post">
+      <input type="text" name="name" class="name-player" placeholder="Nick name"><br/>
+      <input type="hidden" name="id" value="<%= (game) ? game.id : 'no' %>">
+      <input type="hidden" name="private" value="true">
+      <input type="submit" id="play-game" value="Play"/>
+    </form>
+  </div>
+  <div id="playApp" style="display: <%= (user) ? 'block' : 'none' %>" >
+    <div class="player" id="player-owner">
+      <div class="heading">
+        <img class="avatar" src="/images/avt.png" alt="">
+        <h1 class="title"><%= (user) ? user.name : ''%></h1>
+        <div class="scores-container">
+          <div class="score-container">0</div>
+          <div class="best-container">0</div>
+        </div>
+      </div>
+
+      <div class="above-game">
+        <a class="restart-button" style="display: none;">New Game</a>
+        <a class="play-button" style="display: none;">New Game</a>
+        <span class="vs">VS</span>
+      </div>
+
+      <div class="game-container">
+        <div class="game-message">
+          <p></p>
+          <div class="lower">
+            <a class="keep-playing-button">Keep going</a>
+            <a class="retry-button">Try again</a>
+          </div>
+        </div>
+
+        <div class="grid-container">
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+        </div>
+
+        <div class="tile-container">
+
+        </div>
+      </div>
+      <div class="imagesInGame">
+        <ul>
+          <li><img src="<%= game.app.imagesInGame[0] %>" alt=""></li>
+          <li><img src="<%= game.app.imagesInGame[1] %>" alt=""></li>
+          <li><img src="<%= game.app.imagesInGame[2] %>" alt=""></li>
+          <li><img src="<%= game.app.imagesInGame[3] %>" alt=""></li>
+          <li><img src="<%= game.app.imagesInGame[4] %>" alt=""></li>
+          <li><img src="<%= game.app.imagesInGame[5] %>" alt=""></li>
+          <li><img src="<%= game.app.imagesInGame[6] %>" alt=""></li>
+          <li><img src="<%= game.app.imagesInGame[7] %>" alt=""></li>
+          <li><img src="/images/no-user.png" alt=""></li>
+          <li><img src="/images/no-user.png" alt=""></li>
+          <li><img src="/images/no-user.png" alt=""></li>
+        </ul>
+      </div>
+    </div>
+    <div id="other-players">
+      <div class="player" id="player-1">
+        <div class="heading">
+          <img class="avatar" src="/images/avt.png" alt="">
+          <h1 class="title" style="width: 250px;">Your friend</h1>
+          <div class="scores-container">
+            <div class="score-container">0</div>
+            <div class="best-container">0</div>
+          </div>
+        </div>
+
+        <div class="above-game">
+          <a class="restart-button">New Game</a>
+        </div>
+        <div class="game-container">
+          <div class="game-message">
+            <p></p>
+            <div class="lower">
+              <a class="keep-playing-button">Keep going</a>
+              <a class="retry-button">Try again</a>
+            </div>
+          </div>
+
+          <div class="grid-container">
+            <div class="grid-row">
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+            </div>
+          </div>
+
+          <div class="tile-container">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="background-app"></div>
+
+</div>
+
+<script>
+
+</script>

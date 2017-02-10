@@ -1,0 +1,70 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Oh!</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/list-game">List Game <span class="sr-only">(current)</span></a></li>
+        <li><a href="/create-game">Create Game</a></li>
+      </ul>
+
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container" id="home">
+  <div class="row list-game">
+    <a href="/list-game?unremove=1" class="pull-right">
+    <button type="button" class="btn btn-default btn-sm">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> List game remove
+    </button>
+    </a>
+    <table class="table table-condensed">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Player</th>
+        <th>Play</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% games.forEach(function(game, key){ %>
+      <tr>
+        <th scope="row"><%=key%></th>
+        <td><%= game.title %></td>
+        <td><%= game.numberPlayers %></td>
+        <td><%= game.countPlays %></td>
+        <td>
+          <a href="/view-game/<%= game.id %>">
+            <button type="button" class="btn btn-primary btn-sm">Edit</button>
+          </a>
+          <a href="/v1/player/delete-game?id=<%= game.id %><%= (unremove === true) ? '&status=1' : ''%>">
+            <button type="button" class="btn btn-danger btn-sm"><%= (unremove === true) ? 'Restone' : 'Remove'%></button>
+          </a>
+        </td>
+      </tr>
+      <% }) %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+

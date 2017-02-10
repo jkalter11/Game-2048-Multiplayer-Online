@@ -1,0 +1,89 @@
+<!--
+
+
+       444444444       000000000            444444444
+      4::::::::4     00:::::::::00         4::::::::4
+     4:::::::::4   00:::::::::::::00      4:::::::::4
+    4::::44::::4  0:::::::000:::::::0    4::::44::::4
+   4::::4 4::::4  0::::::0   0::::::0   4::::4 4::::4
+  4::::4  4::::4  0:::::0     0:::::0  4::::4  4::::4
+ 4::::4   4::::4  0:::::0     0:::::0 4::::4   4::::4
+4::::444444::::4440:::::0 000 0:::::04::::444444::::444
+4::::::::::::::::40:::::0 000 0:::::04::::::::::::::::4
+4444444444:::::4440:::::0     0:::::04444444444:::::444
+          4::::4  0:::::0     0:::::0          4::::4
+          4::::4  0::::::0   0::::::0          4::::4
+          4::::4  0:::::::000:::::::0          4::::4
+        44::::::44 00:::::::::::::00         44::::::44
+        4::::::::4   00:::::::::00           4::::::::4
+        4444444444     000000000             4444444444
+
+
+
+  This is the default "404: Not Found" page.
+  User agents that don't "Accept" HTML will see a JSON version instead.
+  You can customize the control logic for your needs in `config/404.js`
+
+  Sails considers a request to be in a "404: Not Found" state when a user
+  requests a URL which doesn't match any of your app's routes or blueprints.
+
+  You can also trigger this response from one of your controllers or policies with:
+  `return res.notFound();`
+
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lost Astronaut 404 Error Page</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Le styles -->
+  <link href="404/404.css" rel="stylesheet">
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.js"></script>
+  <![endif]-->
+
+  <!-- Fav and touch icons -->
+  <link rel="shortcut icon" href="favicon.ico">
+</head>
+
+<body>
+
+<div class="wrapper">
+  <img src="images/astronaut.png" class="astronaut" alt="">
+  <img src="images/how-did-i-get-here.png" class="text" alt="">
+  <div class="lower-text">
+    <h1>
+      <% if (typeof data!== 'undefined') { %>
+      <%= data %>
+      <% } else { %>
+      The page you were trying to reach doesn't exist.
+      <% } %>
+    </h1>
+    <p>Please try another section of<br />our awesome page!</p>
+    <a href="http://ohmyidol.com" class="btn"><img src="images/button.png" alt=""></a>
+  </div>
+</div>
+
+
+<script src="js/dependencies/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    if($(window).width() > 991) {
+      $('body').mousemove(function(e){
+        var x = -(e.pageX + this.offsetLeft) / 20;
+        var y = -(e.pageY + this.offsetTop) / 20;
+        $(this).css('background-position', x + 'px ' + y + 'px');
+      });
+    }
+  });
+</script>
+</body>
+</html>

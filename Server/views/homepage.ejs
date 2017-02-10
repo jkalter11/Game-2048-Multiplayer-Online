@@ -1,0 +1,39 @@
+<div class="container" id="home">
+  <a class="logo" href="/"><h1>Oh My Idol</h1></a>
+  <div class="row">
+    <div class="col-xs-12">
+    <!--  <div id="nav" class="pull-left">
+        ::: <span> <a href="#" class="active"> HOT </a> | <a href="#">Last Create</a> | <a href="">All</a></span> :::
+      </div>-->
+      <div id="search" class="pull-right">
+        <form action="/search" action="GET">
+        <input type="text" name="q" class="search-text" placeholder="Search idol">
+        <input type="submit" id="play-game" value="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row list-game">
+<!--    <figure class="op-ad col-sm-6 col-md-4 col-lg-3 col-xs-12" style="overflow: hidden;">
+      <iframe width="320" height="250" style="border:0; margin:0;" src="https://www.facebook.com/adnw_request?placement=820836384715901_820836418049231&adtype=banner300x250"></iframe>
+    </figure>-->
+    <% games.forEach(function(game, key){ %>
+    <div class="game game-<%=key%> col-sm-6 col-md-4 col-lg-3 col-xs-12">
+      <a href="/game/<%= game.slug %>">
+        <img src="<%= game.thumb %>" alt="<%= game.title %>" class="img-responsive">
+      </a>
+
+      <div class="des">
+        <a class="title" href="/game/<%= game.slug %>"><%= game.title %></a>
+        <div class="counts">
+          <p class="col-xs-6 players"><img src="/images/players.png"> Player: <%= game.numberPlayers %></p>
+          <p class="col-xs-6 play"><img src="/images/plays.png">Plays: <%= game.countPlays %></p>
+        </div>
+
+      </div>
+
+    </div>
+    <% }) %>
+  </div>
+ 
+</div>

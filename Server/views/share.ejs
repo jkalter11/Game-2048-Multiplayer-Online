@@ -1,0 +1,525 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=820836384715901";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+<style>
+  .tile-2 .tile-inner {
+    background: url('<%= (game) ? game.imagesInGame[0] : '' %>') no-repeat !important;
+
+  }
+  .tile-4 .tile-inner {
+    background: url('<%= (game) ? game.imagesInGame[1] : ''  %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-8 .tile-inner {
+    background: url('<%= (game) ? game.imagesInGame[2] : ''  %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-16 .tile-inner {
+    background: url('<%= (game) ? game.imagesInGame[3] : ''  %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-32 .tile-inner {
+    background: url('<%= (game) ? game.imagesInGame[4] : ''  %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-64 .tile-inner {
+    background: url('<%= (game) ? game.imagesInGame[5] : ''  %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-128 .tile-inner {
+    background: url('<%= (game) ? game.imagesInGame[6] : ''  %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-256 .tile-inner {
+    background: url('<%= (game) ? game.imagesInGame[7] : ''  %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-512 .tile-inner {
+    background: url('<%= (game) ? game.imagesInGame[8] : ''  %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-1024 .tile-inner {
+    background: url('<%= (game) ? game.imagesInGame[9] : ''  %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .tile-2048 .tile-inner {
+    background: url('<%= (game) ? game.imagesInGame[10] : ''  %>') no-repeat !important;
+    text-indent: 1000px;
+  }
+  .background-app {
+    background: url('<%= (game) ? game.background : ''  %>') no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+<div class="back-home">
+  <a href="/">
+    <img src="/images/back-home.png" alt="">
+  </a>
+</div>
+
+<div class="container pub-game g-<%= (user) ? user.id : 'no' %>" id="iGame">
+  <input type="hidden" value="<%=(game) ? game.slug : 'no' %>" id="thisGame">
+  <input type="hidden" value="<%=(game) ? game.id : 'no' %>" id="idGame">
+  <input type="hidden" value="<%= (user)? user.id : 'no' %>" id="thisPlayer">
+  <input type="hidden" value="<%= (user)? user.name : 'no' %>" id="namePlayer">
+  <div id="createAccount" style="display: <%= (user == undefined) ? 'block' : 'none' %>" class="<%= (user == undefined) ? 'block' : 'none' %>" >
+    <form action="/v1/player/new-player" method="post">
+      <h2>.: <%= (game) ? game.title : '' %> :.</h2>
+      <input type="text" name="name" class="name-player" placeholder="Nick name"><br/>
+      <input type="hidden" name="id" value="<%= (game) ? game.slug : 'no' %>">
+      <input type="submit" id="play-game" value="Play"/>
+
+    </form>
+
+  </div>
+  <div id="playApp" style="display: <%= (user) ? 'block' : 'none' %>" >
+    <div class="ads-1" style="text-align: center">
+      <figure class="op-ad" target="_blank">
+        <iframe width="320" height="50" style="border:0; margin:0;" target="_blank" src="https://www.facebook.com/adnw_request?placement=820836384715901_820839344715605&adtype=banner320x50"></iframe>
+      </figure>
+    </div>
+    <!--<form action="/v1/player/private-game-create" method="post">
+      <input type="hidden" name="owner" value="<%=(user) ? user.id : null %>">
+      <input type="hidden" name="numberPlayers" value="2">
+      <input type="hidden" name="app" value="<%=(game) ? game.slug : 0 %>">
+      <input type="submit" class="button-create-private-game" value="Create Private Game 1 vs 1"/>
+    </form>-->
+
+    <div class="player" id="player">
+      <div class="heading">
+        <div class="scores-container">
+          <div class="rank-container">0</div>
+          <div class="score-container">0</div>
+          <div class="best-container">0</div>
+        </div>
+      </div>
+
+      <div class="above-game">
+        <!--<img class="avatar" src="/images/avt.png" alt="">-->
+        <h1 class="title"><%= (user) ? user.name : ''%></h1>
+        <a href="<%=(game) ? "http://ohmyidol.com/game/"+game.slug : ''%>" class="restart-button">New Game</a>
+      </div>
+
+      <div class="game-container">
+        <div class="ads">
+          <div class="close"><img src="/images/close.png" alt=""></div>
+        </div>
+        <div class="game-message">
+          <p></p>
+          <div class="lower">
+            <a href="share">Share Score</a>
+            <a class="keep-playing-button">Keep going</a>
+            <a class="retry-button">Try again</a>
+          </div>
+        </div>
+
+        <div class="grid-container">
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+        </div>
+
+        <div class="tile-container">
+
+        </div>
+      </div>
+      <div class="imagesInGame">
+        <ul>
+          <li><img src="<%= game.imagesInGame[0] %>" alt=""></li>
+          <li><img src="<%= game.imagesInGame[1] %>" alt=""></li>
+          <li><img src="<%= game.imagesInGame[2] %>" alt=""></li>
+          <li><img src="<%= game.imagesInGame[3] %>" alt=""></li>
+          <li><img src="<%= game.imagesInGame[4] %>" alt=""></li>
+          <li><img src="<%= game.imagesInGame[5] %>" alt=""></li>
+          <li><img src="<%= game.imagesInGame[6] %>" alt=""></li>
+          <li><img src="<%= game.imagesInGame[7] %>" alt=""></li>
+          <li><img src="/images/no-user.png" alt=""></li>
+          <li><img src="/images/no-user.png" alt=""></li>
+          <li><img src="/images/no-user.png" alt=""></li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div id="other-players" class="visible-lg">
+      <div class="title">
+        #TOP PLAYERS
+
+      </div>
+      <div id="players-top">
+        <div class="player" id="player-0">
+          <div class="heading">
+
+            <h1 class="title sds"></h1>
+            <div class="scores-container">
+              <div class="score-container">0</div>
+              <div class="best-container">0</div>
+            </div>
+          </div>
+
+          <div class="above-game">
+            <a class="restart-button">New Game</a>
+          </div>
+
+          <div class="game-container">
+            <div class="game-message">
+              <p></p>
+              <div class="lower">
+                <a class="keep-playing-button">Keep going</a>
+                <a class="retry-button">Try again</a>
+              </div>
+            </div>
+
+            <div class="grid-container">
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+            </div>
+
+            <div class="tile-container">
+
+            </div>
+          </div>
+        </div>
+        <div class="player" id="player-1">
+          <div class="heading">
+            <!--<img class="avatar" src="/images/avt.png" alt="">-->
+            <h1 class="title"></h1>
+            <div class="scores-container">
+              <div class="score-container">0</div>
+              <div class="best-container">0</div>
+            </div>
+          </div>
+
+          <div class="above-game">
+            <a class="restart-button">New Game</a>
+          </div>
+
+          <div class="game-container">
+            <div class="game-message">
+              <p></p>
+              <div class="lower">
+                <a href="share">Share Facebook</a>
+                <a class="keep-playing-button">Keep going</a>
+                <a class="retry-button">Try again</a>
+              </div>
+            </div>
+
+            <div class="grid-container">
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+            </div>
+
+            <div class="tile-container">
+
+            </div>
+          </div>
+        </div>
+        <div class="player" id="player-2">
+          <div class="heading">
+            <!--<img class="avatar" src="/images/avt.png" alt="">-->
+            <h1 class="title"></h1>
+            <div class="scores-container">
+              <div class="score-container">0</div>
+              <div class="best-container">0</div>
+            </div>
+          </div>
+
+          <div class="above-game">
+            <a class="restart-button">New Game</a>
+          </div>
+
+          <div class="game-container">
+            <div class="game-message">
+              <p></p>
+              <div class="lower">
+                <a class="keep-playing-button">Keep going</a>
+                <a class="retry-button">Try again</a>
+              </div>
+            </div>
+
+            <div class="grid-container">
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+            </div>
+
+            <div class="tile-container">
+
+            </div>
+          </div>
+        </div>
+        <div class="player" id="player-3">
+          <div class="heading">
+            <!--<img class="avatar" src="/images/avt.png" alt="">-->
+            <h1 class="title"></h1>
+            <div class="scores-container">
+              <div class="score-container">0</div>
+              <div class="best-container">0</div>
+            </div>
+          </div>
+
+          <div class="above-game">
+            <a class="restart-button">New Game</a>
+          </div>
+
+          <div class="game-container">
+            <div class="game-message">
+              <p></p>
+              <div class="lower">
+                <a class="keep-playing-button">Keep going</a>
+                <a class="retry-button">Try again</a>
+              </div>
+            </div>
+
+            <div class="grid-container">
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+            </div>
+
+            <div class="tile-container">
+
+            </div>
+          </div>
+        </div>
+        <div class="player" id="player-4">
+          <div class="heading">
+            <!--<img class="avatar" src="/images/avt.png" alt="">-->
+            <h1 class="title"></h1>
+            <div class="scores-container">
+              <div class="score-container">0</div>
+              <div class="best-container">0</div>
+            </div>
+          </div>
+
+          <div class="above-game">
+            <a class="restart-button">New Game</a>
+          </div>
+
+          <div class="game-container">
+            <div class="game-message">
+              <p></p>
+              <div class="lower">
+                <a class="keep-playing-button">Keep going</a>
+                <a class="retry-button">Try again</a>
+              </div>
+            </div>
+
+            <div class="grid-container">
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+            </div>
+
+            <div class="tile-container">
+
+            </div>
+          </div>
+        </div>
+        <div class="player" id="player-5">
+          <div class="heading">
+            <!--<img class="avatar" src="/images/avt.png" alt="">-->
+            <h1 class="title"></h1>
+            <div class="scores-container">
+              <div class="score-container">0</div>
+              <div class="best-container">0</div>
+            </div>
+          </div>
+
+          <div class="above-game">
+            <a class="restart-button">New Game</a>
+          </div>
+
+          <div class="game-container">
+            <div class="game-message">
+              <p></p>
+              <div class="lower">
+                <a class="keep-playing-button">Keep going</a>
+                <a class="retry-button">Try again</a>
+              </div>
+            </div>
+
+            <div class="grid-container">
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+              <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+              </div>
+            </div>
+
+            <div class="tile-container">
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="title" style="margin-top: 20px;">
+        #Comments - Tags Friend To Play
+        <div class="fb-like" data-href="http://ohmyidol.com" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div>
+        <div class="fb-share-button" data-href="http://ohmyidol.com/game/<%= (game) ? game.slug : '' %>" data-layout="button_count" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div>
+      </div>
+      <div class="fb-comments" width="470" data-colorscheme="dark" data-href="<%= typeof game == 'undefined' ? 'http://ohmyidol.com' : 'http://ohmyidol.com/game/'+game.slug %>" data-numposts="5" order_by="reverse_time"></div>
+    </div>
+    <div class="board-player hidden-xs">
+      <h5>RANKINGS</h5>
+      <ul></ul>
+    </div>
+  </div>
+  <div class="background-app"></div>
+
+</div>
+

@@ -1,0 +1,189 @@
+@charset "utf-8";
+
+/* ============================== */
+/*
+  - Title: Lost Astronaut 404 Page
+  - Autor: Frekvenca spleta s.p. / Frequency Themes
+  - Email: info@frekvencaspleta.si
+  - Version: 1.00
+*/
+/* ============================== */
+
+/* Fonts --------------------------------------------------------*/
+@font-face {
+  font-family: 'sansationbold';
+  src: url('fonts/sansation_bold.eot');
+  src: url('fonts/sansation_bold.eot?#iefix') format('embedded-opentype'),
+  url('fonts/sansation_bold.woff') format('woff'),
+  url('fonts/sansation_bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'sansationregular';
+  src: url('fonts/sansation_regular.eot');
+  src: url('fonts/sansation_regular.eot?#iefix') format('embedded-opentype'),
+  url('fonts/sansation_regular.woff') format('woff'),
+  url('fonts/sansation_regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+/******************************* RESET *******************************/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video
+{margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent;}
+html {overflow-y: scroll;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block;}
+ul {list-style:none;}
+blockquote, q {quotes:none;}
+blockquote:before, blockquote:after, q:before, q:after {content:''; content:none;}
+a {margin:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent;}
+ins {background-color:#ff9; color:#000; text-decoration:none;}
+mark {background-color:#ff9; color:#000; font-style:italic; font-weight:bold;}
+del {text-decoration: line-through;}
+abbr[title], dfn[title] {border-bottom:1px dotted; cursor:help;}
+table {border-collapse:collapse; border-spacing:0;}
+hr {display:block; height:0; background-color: #c7c7c7; border-top: 1px solid #c7c7c7; border-left:0; border-right:0; border-bottom: 1px solid #FFF; margin:1em 0; padding:0;}
+*+html hr {height: 2px;}
+
+/* Standar Styles --------------------------------------------------------*/
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  background: #2d0d38 url('../images/bg-404.jpg') no-repeat center top;
+  font-family: 'sansationregular';
+}
+
+/* Content Styles --------------------------------------------------------*/
+.wrapper {
+  margin: 0 auto;
+  width: 800px;
+  position: relative;
+}
+
+.astronaut {
+  position: absolute;
+  top: 162px;
+  left: 0;
+  z-index: 10;
+}
+
+.text {
+  position: absolute;
+  top: 90px;
+  right: 0;
+}
+
+.lower-text {
+  position: absolute;
+  top: 380px;
+  right: 0;
+  width: 330px;
+  z-index: 100;
+}
+
+.lower-text h1 {
+  font-size: 26px;
+  line-height: 30px;
+  margin: 0 0 10px 0;
+  font-family: 'sansationbold';
+  color: #FFF;
+}
+
+.lower-text p {
+  font-size: 16px;
+  line-height: 20px;
+  color: #98d9ff;
+  margin-bottom: 20px;
+}
+
+.lower-text .btn {
+  float: right;
+}
+
+/* Responsive Styles --------------------------------------------------------*/
+
+@media (max-width: 840px) {
+  .wrapper {
+    width: 580px;
+    min-height: 660px;
+  }
+
+  .astronaut {
+    width: 490px;
+  }
+
+  .text {
+    width: 430px
+  }
+
+  .lower-text {
+    top: 308px;
+    width: 224px;
+  }
+}
+
+@media (max-width: 620px) {
+  .wrapper {
+    width: 320px;
+    min-height: 590px;
+  }
+
+  .astronaut {
+    width: 290px;
+    top: 80px;
+  }
+
+  .text {
+    width: 270px;
+    top: 34px;
+  }
+
+  .lower-text {
+    top: 355px;
+    width: 320px;
+  }
+  .lower-text h1 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width:380px) {
+  .wrapper {
+    width: 290px;
+    min-height: 590px;
+  }
+
+  .astronaut {
+    width: 260px;
+    top: 80px;
+  }
+
+  .text {
+    width: 250px;
+    top: 34px;
+  }
+
+  .lower-text {
+    top: 320px;
+    width: 290px;
+  }
+  .lower-text h1 {
+    font-size: 22px;
+  }
+}

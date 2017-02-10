@@ -30,3 +30,16 @@ Link demo : http://xsystem.io:6789
 
 1. In file `/Cordova/www/index.html` line `47` please replace your website want change to here.
 2. Read guide deploy with cordova at here http://docs.phonegap.com/
+
+
+# Source code used by:
+- Node.js
+- Sails Framework
+- Socket.io
+- Library [2048](https://github.com/gabrielecirulli/2048)
+- Bootstrap
+- jQuery
+- SweetAlert
+- MongoDB
+- Redis
+...

@@ -1,5 +1,14 @@
 This is version for artists with multiplayer online (web/mobile/native app - use cordova).
 
+# Features
+- Multiplayer online
+- Mode solo 1 vs 1
+- LeaderBoard
+- Top Players
+- Facebook comment,like share in game
+- Manager games
+- Support Mobile/Tablet and Hybrid App (with cordova)
+
 # Live demo
 
 Screenshot game:

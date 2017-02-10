@@ -32,7 +32,7 @@ Link demo : http://xsystem.io:6789
 2. Read guide deploy with cordova at here http://docs.phonegap.com/
 
 
-# Source code used by:
+### Source code used by:
 - Node.js
 - Sails Framework
 - Socket.io
@@ -42,4 +42,4 @@ Link demo : http://xsystem.io:6789
 - SweetAlert
 - MongoDB
 - Redis
-...
+

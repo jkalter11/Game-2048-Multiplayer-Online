@@ -1,6 +1,6 @@
 This is version for artists with multiplayer online (web/mobile/native app - use cordova).
 
-- Article about the project : http://gamek.vn/quick-game-danh-cho-tin-do-dota-va-lien-minh-huyen-thoai-trong-luc-cho-game-20160616135726283.chn
+- A article about the project : http://gamek.vn/quick-game-danh-cho-tin-do-dota-va-lien-minh-huyen-thoai-trong-luc-cho-game-20160616135726283.chn
 
 # Features
 - Multiplayer online

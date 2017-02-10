@@ -297,8 +297,6 @@ module.exports = {
         }
       }, function (err, data) {
         require('fs').stat(data.file,function (err, stats) {
-          console.log("Data:::", data);
-          console.log("Stats:::", stats);
           res.ok({data: data, stats: stats})
         })
       })
@@ -401,8 +399,34 @@ module.exports = {
       req.session.destroy();
       res.redirect('/')
     } else {
-      res.ok('not have user');
+      res.ok('dont have user');
     }
 
+  },
+
+  'fixLink' : function(req, res) {
+    Game.find().exec((e, r) => {
+      r.forEach((v, k) => {
+        let game = v;
+        if (game && game.background) {
+          game.background = game.background.replace('http://ohmyidol.com/', './');
+        }
+        if (game && game.thumb) {
+          game.thumb = game.thumb.replace('http://ohmyidol.com/', './');
+        }
+        if (game && game.imagesInGame) {
+          let imagesInGame = [];
+          game.imagesInGame.forEach((v2, k2) => {          
+            v2 = v2.replace('http://ohmyidol.com/', './');
+            imagesInGame.push(v2);
+          })          
+          game.imagesInGame = imagesInGame;
+        }
+        Game.update(game.id, game).exec((e, updated) => {
+          console.log("Updated :::", e, updated);
+        });
+      })
+      res.ok("progress");
+    })
   }
 }

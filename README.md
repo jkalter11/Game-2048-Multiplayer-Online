@@ -5,7 +5,7 @@ This is version for artists with multiplayer online (web/mobile/native app - use
 Screenshot game:
 ![alt tag](./screenshot.jpg)
 
-Link demo : http://2048.xsystem.io
+Link demo : http://xsystem.io:6789
 
 # Installation
 
@@ -14,7 +14,8 @@ Link demo : http://2048.xsystem.io
 3. `npm install`
 4. Restore database mongodb : `mongorestore dump`
 5. Run app : `node app --prod`
-6. Go to `[your_server_ip]:6789`
+6. Fix link images: `http://[your_server]:6789/v1/player/fixlink`
+7. Go to `http://[your_server]:6789`
 
 # Deploy with cordova
 

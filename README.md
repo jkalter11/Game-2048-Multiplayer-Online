@@ -5,7 +5,7 @@ This is version for artists with multiplayer online (web/mobile/native app - use
 Screenshot game:
 ![alt tag](./screenshot.jpg)
 
-Link demo : http://xsystem.io:6789
+Link demo : http://2048.xsystem.io
 
 # Installation
 

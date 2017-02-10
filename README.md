@@ -19,7 +19,7 @@ Link demo : http://xsystem.io:6789
 # Installation
 
 1. Clone project `git clone https://github.com/tungtouch/Game-2048-Players-Online.git`
-2. `cd Game-2048-Players-Online`
+2. `cd Game-2048-Multiplayer-Online`
 3. `npm install`
 4. Restore database mongodb : `mongorestore dump`
 5. Run app : `node app --prod`

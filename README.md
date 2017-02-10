@@ -30,7 +30,7 @@ Link demo : http://xsystem.io:6789
 
 1. In file `/Cordova/www/index.html` line `47` please replace your website want change to here.
 2. Read guide deploy with cordova at here http://docs.phonegap.com/
-
+3. Or you can use service `https://build.phonegap.com/` to fast deploy.
 
 ### Source code used by:
 - Node.js

@@ -426,7 +426,7 @@ module.exports = {
           console.log("Updated :::", e, updated);
         });
       })
-      res.ok("progress");
+      res.ok("Done");
     })
   }
 }

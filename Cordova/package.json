@@ -1,7 +1,7 @@
 {
-  "name": "phonegap-template-hello-world",
+  "name": "phonegap-template-multiplayer-2048",
   "version": "4.0.2",
-  "description": "> A Hello World template built with PhoneGap",
+  "description": "> A 2048 multiplayer game built with PhoneGap",
   "repository": {
     "type": "git",
     "url": "https://github.com/phonegap/phonegap-app-hello-world.git"
